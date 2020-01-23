@@ -24,16 +24,18 @@ const init = async function(){
         })
     }
     
-    for(let url of links.entries()){
+    for(let url of [...links]){
         conditions.push(await getConditions(url, page))
     }
     
     browser.close()
     return conditions
+    // return conditions
 }
 
 const getConditions = async function(url, page){
-    await page.goto(url)
+    console.log(url)
+    await page.goto(url.toString())
     await page.addScriptTag({url: 'https://code.jquery.com/jquery-3.2.1.min.js'})
     let condition = await page.evaluate(()=>{
         let condition = {
