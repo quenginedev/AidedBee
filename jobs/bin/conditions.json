@@ -1,0 +1,39 @@
+[
+    {
+        "causes": [
+            "hardening of the arteries (atherosclerosis). atherosclerosis occurs when fat and other substances build up on the lining of a blood vessel.",
+            "high blood pressure. high blood pressure can damage and weaken the aorta's walls.",
+            "blood vessel diseases. these are diseases that cause blood vessels to become inflamed.",
+            "infection in the aorta. rarely, a bacterial or fungal infection might cause an abdominal aortic aneurysms.",
+            "trauma. for example, being in a car accident can cause an abdominal aortic aneurysms."
+        ],
+        "symptoms": [
+            "deep, constant pain in your abdomen or on the side of your abdomen",
+            "back pain",
+            "a pulse near your bellybutton"
+        ],
+        "risk_factors": [
+            "tobacco use. smoking is the strongest risk factor. it can weaken the aortic walls, increasing the risk not only of developing an aortic aneurysm, but of rupture. the longer and more you smoke or chew tobacco, the greater the chances of developing an aortic aneurysm.",
+            "age. these aneurysms occur most often in people age 65 and older.",
+            "being male. men develop abdominal aortic aneurysms much more often than women do.",
+            "being white. people who are white are at higher risk of abdominal aortic aneurysms.",
+            "family history. having a family history of abdominal aortic aneurysms increases your risk of having the condition.",
+            "other aneurysms. having an aneurysm in another large blood vessel, such as the artery behind the knee or the aorta in the chest, might increase your risk of an abdominal aortic aneurysm."
+        ],
+        "complications": [
+            "sudden, intense and persistent abdominal or back pain, which can be described as a tearing sensation",
+            "low blood pressure",
+            "fast pulse"
+        ],
+        "prevention": [
+            "don't use tobacco products. quit smoking or chewing tobacco and avoid secondhand smoke.",
+            "eat a healthy diet. focus on eating a variety of fruits and vegetables, whole grains, poultry, fish and low-fat dairy products. avoid saturated fat, trans fats and limit salt.",
+            "keep your blood pressure and cholesterol under control. if your doctor has prescribed medications, take them as instructed.",
+            "get regular exercise. try to get at least 150 minutes a week of moderate aerobic activity. if you haven't been active, start slowly and build up. talk to your doctor about what kinds of activities are right for you."
+        ],
+        "name": "Abdominal aortic aneurysm",
+        "imgURL": "https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/11/15/17/35/ds01194_-my00076_im04478_mcdc7_abaneurysmthu_jpg.jpg",
+        "overview": "An abdominal aortic aneurysm is an enlarged area in the lower part of the major vessel that supplies blood to the body (aorta). The aorta runs from your heart through the center of your chest and abdomen. The aorta is the largest blood vessel in the body, so a ruptured abdominal aortic aneurysm can cause life-threatening bleeding. Depending on the size of the aneurysm and how fast it's growing, treatment varies from watchful waiting to emergency surgery. ",
+        "ref": "https://www.mayoclinic.org/diseases-conditions/abdominal-aortic-aneurysm/symptoms-causes/syc-20350688"
+    }
+]
