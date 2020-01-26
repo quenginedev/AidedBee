@@ -53,6 +53,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+jobs/bin/conditions.json
+
+
 # TypeScript v1 declaration files
 typings/
 
