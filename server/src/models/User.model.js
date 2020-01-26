@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
+import userStatic from '../static/user.static'
 
 const UserSchema = new mongoose.Schema({
     name: String,
-    userName: {
+    username: {
         type: String,
         unique: true
     },
@@ -14,7 +15,13 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    account_type: {
+        type: String,
+        enum: userStatic.account_types,
+        default : userStatic.account_types[0]
+    },
+    phoneNumber: String,
 })
 
 export default mongoose.model('user', UserSchema)
