@@ -3,7 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
-import bodyParser from 'body-parser'
+import config from './config'
 
 const startServer = async () => {
     const app = express()
@@ -15,7 +15,7 @@ const startServer = async () => {
 
     server.applyMiddleware({app})
 
-    await mongoose.connect('mongodb://localhost:27017/AidedBee', {useNewUrlParser: true})
+    await mongoose.connect(config.mongodb_uri, {useNewUrlParser: true})
 
     app.listen(3000, ()=>{
         console.log('server ready... GQL path: localhost:3000/', server.graphqlPath)

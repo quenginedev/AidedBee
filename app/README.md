@@ -1,22 +1,24 @@
-# AidedBee (aidedbee)
+# app
 
-A healthcare app
-
-## Install the dependencies
-```bash
+## Project setup
+```
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
+### Compiles and hot-reloads for development
+```
+npm run serve
 ```
 
-
-### Build the app for production
-```bash
-quasar build
+### Compiles and minifies for production
+```
+npm run build
 ```
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
