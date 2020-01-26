@@ -1,15 +1,7 @@
-import User from "./models/User"
+import queries from './queries'
+import mutations from './mutations'
 
 export default  {
-    Query: {
-        user: (_, {id}) => User.findById(id),
-        users: () => User.find()
-    },
-    Mutation: {
-        createUser: (_, {name, password, email}) => {
-            console.log('new User', name, password, email)
-            const user = new User({name, password, email})
-            return user.save()
-        }
-    }
+    Query: queries,
+    Mutation: mutations
 } 
