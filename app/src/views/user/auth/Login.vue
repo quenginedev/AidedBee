@@ -1,5 +1,20 @@
 <template>
     <v-container>
+        <v-snackbar
+            v-model="error.show"
+            color="error"
+            top
+        >
+            {{ error.message }}
+            <v-btn
+                color="white"
+                rounded
+                text
+                @click="error.show = false"
+            >
+                Close
+            </v-btn>
+        </v-snackbar>
         <v-row 
             justify="center"
             align="end"
@@ -23,6 +38,7 @@
                 <v-form class=" mt-7 mb-12">
                     <v-slide-x-reverse-transition leave-absolute group>
                         <v-text-field
+                            v-model="user.phone"
                             key="phone-field"
                             v-if="login_by_phone && !show_password_field"
                             filled
@@ -33,6 +49,7 @@
                             placeholder="Phone number"
                         ></v-text-field>
                         <v-text-field
+                            v-model="user.email"
                             key="email-field"
                             v-if="!login_by_phone && !show_password_field"
                             filled
@@ -44,6 +61,7 @@
                         ></v-text-field>
                         
                         <v-text-field
+                            v-model="user.passowrd"
                             key="password-field"
                             v-if="show_password_field"
                             filled
@@ -57,10 +75,10 @@
                             </v-icon>
                         </v-text-field>
                     </v-slide-x-reverse-transition>
-                    <v-btn @click="show_password_field = true" v-if="!show_password_field" block color="orange" dark rounded class="mb-4 elevation-7" x-large>
+                    <v-btn @click="nextStep" v-if="!show_password_field" block color="orange" dark rounded class="mb-4 elevation-7" x-large>
                         Next <v-icon>mdi-chevron-right</v-icon>
                     </v-btn>
-                    <v-btn @click="is_logging_in = true" :loading="is_logging_in" v-else block color="orange" dark rounded class="mb-4 elevation-7" x-large>
+                    <v-btn @click="loginUser" :loading="is_logging_in" v-else block color="orange" dark rounded class="mb-4 elevation-7" x-large>
                         Login <v-icon>mdi-login</v-icon>
                     </v-btn>
                     <div class=" text-center">
@@ -82,7 +100,33 @@ export default {
             login_by_phone: false,
             show_password_field: false,
             show_password: false,
-            is_logging_in: false
+            is_logging_in: false,
+            user:{
+                email: '',
+                phone: '',
+                password: '',
+            },
+            error: {
+                show: false,
+                message: ''
+            }
+        }
+    },
+    methods: {
+        nextStep(){
+            if(this.user.email || this.user.phone)
+                this.show_password_field = true
+            else{
+                this.error.message = 'Please fill in the field below'
+                this.error.show = true
+            }
+
+        },
+        loginUser(){
+            is_logging_in = true
+            setTimeout(_=>{
+                this.is_logging_in = false
+            }, 5000)
         }
     },
 }
