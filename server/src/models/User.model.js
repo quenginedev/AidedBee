@@ -3,6 +3,7 @@ import userStatic from '../static/user.static'
 const bcrypt = require('bcrypt')
 const config = require('../config').default
 const jwt = require('jsonwebtoken')
+import { AuthenticationError } from 'apollo-server-express'
 
 const UserSchema = mongoose.Schema({
     displayName: String,
@@ -53,11 +54,11 @@ UserSchema.statics.findByEmailAndPassword = async (email, password) => {
     // Search for a user by email and password.
     const user = await User.findOne({ email})
     if (!user) {
-        throw new Error({ error: 'Invalid login credentials, no user' })
+        throw new AuthenticationError('Invalid login credentials, no user')
     }
     const isPasswordMatch = await bcrypt.compare(password, user.password)
     if (!isPasswordMatch) {
-        throw new Error({ error: 'Invalid login credentials, wrong password' })
+        throw new AuthenticationError('Invalid login credentials, wrong password')
     }
     user.token = user.generateAuthToken()
     return user

@@ -7,20 +7,8 @@
 </template>
 
 <script>
-import {gql} from 'apollo-boost'
 
 export default {
-  name: 'App',
-  apollo: {
-    users: {
-      query : gql`
-      query Users {
-        users {
-          email id
-        }
-      }
-      `
-    }
-  }  
+  name: 'App',  
 };
 </script>

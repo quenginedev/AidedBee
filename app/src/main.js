@@ -10,6 +10,7 @@ import VueApollo from 'vue-apollo'
 const apolloProvider = new VueApollo({
   defaultClient: new ApolloClient({
     uri: 'http://localhost:3000/graphql',
+    
     request: (operation) => {
     const token = localStorage.getItem('token')
     operation.setContext({
@@ -31,6 +32,6 @@ new Vue({
   router,
   store,
   vuetify,
-  provide: apolloProvider.provide(),
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app')

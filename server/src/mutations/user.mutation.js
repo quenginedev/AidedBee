@@ -6,9 +6,7 @@ export default {
         const user = new User({password, email})
         return user.save()
     },
-    loginByEmail: (_, {email, password}) => {
-        User.findByEmailAndPassword(email, password)
-        
+    loginByEmail: (_, {email, password}) => {        
         return User.findByEmailAndPassword(email, password)
     },
     loginByPhone: (_, {phone, password}) => {
