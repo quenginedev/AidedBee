@@ -3,7 +3,7 @@ const fs = require('fs')
 
 const startJob = async function (){
     let conditions = await mayoclinic()
-    await fs.writeFile('./bin/conditions.json', JSON.stringify(conditions), 'utf8', function(error){
+    await fs.writeFile('./bin/raw_conditions.json', JSON.stringify(conditions), 'utf8', function(error){
         if(error){
             console.log("An error occured while writing JSON Object to File.");
             return err

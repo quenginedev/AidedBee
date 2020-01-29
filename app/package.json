@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@vue/apollo-util": "^4.0.0-alpha.6",
     "apollo-boost": "^0.4.7",
     "core-js": "^3.4.4",
     "graphql": "^14.5.8",
