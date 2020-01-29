@@ -64,7 +64,19 @@ UserSchema.statics.findByEmailAndPassword = async (email, password) => {
     return user
 }
 
-
+UserSchema.statics.findByPhoneAndPassword = async ( phone, pin ) => {
+    // Search for a user by email and password.
+    const user = await User.findOne({ phone })
+    if (!user) {
+        throw new AuthenticationError('Invalid login credentials, no user')
+    }
+    const isPasswordMatch = await bcrypt.compare(pin, user.pin)
+    if (!isPasswordMatch) {
+        throw new AuthenticationError('Invalid login credentials, wrong password')
+    }
+    user.token = user.generateAuthToken()
+    return user
+}
 
 const User = mongoose.model('user', UserSchema)
 module.exports = User

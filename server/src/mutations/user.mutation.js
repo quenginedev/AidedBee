@@ -9,8 +9,8 @@ export default {
     loginByEmail: (_, {email, password}) => {        
         return User.findByEmailAndPassword(email, password)
     },
-    loginByPhone: (_, {phone, password}) => {
-        return User.findOne({phone, password})
+    loginByPhone: (_, {phoneNumber, pin}) => {
+        return User.findOne({phoneNumber, pin})
         
     },
 }

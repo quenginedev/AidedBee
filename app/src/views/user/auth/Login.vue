@@ -22,7 +22,7 @@
         >
             <div class="col-11 col-sm-8 col-md-5 col-lg-4 col-xl-3">
                 <v-row align="center" justify="space-between">
-                    <v-btn v-if="show_password_field" @click="show_password_field = false" color="primary" dark fab> 
+                    <v-btn v-if="show_password_field" @click="show_password_field = false" color="secondary" dark fab> 
                         <v-icon>mdi-chevron-left</v-icon>
                     </v-btn>
                     
@@ -30,7 +30,7 @@
                         <v-icon size="60" color="white">mdi-bee</v-icon>
                     </v-avatar>
                         
-                    <v-btn v-if="!show_password_field" @click="login_by_phone = !login_by_phone" color="primary" dark fab> 
+                    <v-btn v-if="!show_password_field" @click="login_by_phone = !login_by_phone" color="secondary" dark fab> 
                         <v-icon v-if="login_by_phone">mdi-email</v-icon>
                         <v-icon v-else>mdi-phone</v-icon>
                     </v-btn>
@@ -82,7 +82,7 @@
                         Login <v-icon>mdi-login</v-icon>
                     </v-btn>
                     <div class=" text-center">
-                        <v-btn rounded text color="primary darken-2">forgot password?</v-btn>
+                        <v-btn rounded text color="secondary">forgot password?</v-btn>
                     </div>
                 </v-form>
                 <v-row class="my-7" justify="space-between" align="center">
@@ -94,7 +94,10 @@
     </v-container>
 </template>
 <script>
-import { loginByEmailAndPassword } from '../../../graphql/users.graphql'
+import { 
+    loginByEmailAndPassword,
+    loginUserByPhoneAndPin 
+    } from '../../../graphql/users.graphql'
 
 export default {
     data() {
@@ -132,9 +135,33 @@ export default {
             })
             .then(res=>{
                 console.log(res)
+                localStorage.setItem('token', res.data.loginByEmail.token)
+                this.$router.push({name: 'user-home'})
             }).catch(err=>{
-                console.log(err.message)
-                this.error.message = err.message
+                this.error.message = err.graphQLErrors.length > 0 ? 
+                    err.graphQLErrors[0].message :
+                    err.message
+                
+                this.error.show = true
+            }).finally(_=>{
+                this.is_logging_in = false
+            })
+        },
+        loginUserByPhoneAndPin(){
+            console.log('user phone', this.user.phone, this.user.password)
+            this.$apollo.mutate({
+                mutation: loginUserByPhoneAndPin,
+                variables: {email: this.user.email, pin: this.user.password}
+            })
+            .then(res=>{
+                console.log(res)
+                localStorage.setItem('token', res.data.loginByEmail.token)
+                this.$router.push({name: 'user-home'})
+            }).catch(err=>{
+                this.error.message = err.graphQLErrors.length > 0 ? 
+                    err.graphQLErrors[0].message :
+                    err.message
+                
                 this.error.show = true
             }).finally(_=>{
                 this.is_logging_in = false
@@ -143,6 +170,8 @@ export default {
         loginUser(){
             this.is_logging_in = true
             if(!this.login_by_phone){
+                this.loginUserByEmailAndPassword()
+            }else{
                 this.loginUserByEmailAndPassword()
             }
         }

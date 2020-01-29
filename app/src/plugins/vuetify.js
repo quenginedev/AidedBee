@@ -10,9 +10,9 @@ const opts = {
                 primary: '#FF9800',
                 secondary: '#AE8A68',
                 accent: '#DFE0DF',
-                error: '#FF675B',
-                success: '#789B00',
-                info: '#00BAAD'
+                // error: '#FF675B',
+                // success: '#789B00',
+                // info: '#00BAAD'
             },
         },
     },

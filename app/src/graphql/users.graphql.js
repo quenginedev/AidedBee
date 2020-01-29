@@ -13,3 +13,16 @@ export const loginByEmailAndPassword = gql`
   }
 }
 `
+export const loginByPhoneAndPin = gql`
+  mutation loginByPhoneAndPin($phoneNumber: String, $password: String){
+    loginByPhone(phoneNumber: $phoneNumber pin: $password){
+      email,
+      phoneNumber,
+      displayName,
+      photoUrl,
+      id,
+      type,
+      token
+    }
+  }
+`

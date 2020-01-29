@@ -8,7 +8,8 @@ export default gql`
         displayName: String,
         type: String,
         email: String,
-        password: String!,
+        password: String,
+        pin: String,
         token: String
     }
     
@@ -21,6 +22,6 @@ export default gql`
     type Mutation {
         createUserByEmailAndPassword(email: String!, password: String!): User!
         loginByEmail(email: String!, password: String!): User  
-        loginByPhone(phone: String!, password: String!): User  
+        loginByPhone(phoneNumber: String!, pin: String!): User  
     }
 `
